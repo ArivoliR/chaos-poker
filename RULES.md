@@ -455,7 +455,7 @@ P1 → Engine:      CHECK
 
 ### 9.5 Timing and Errors
 
-- Bots must respond within **100 milliseconds** per decision.
+- Bots must respond within **10 milliseconds** per decision.
 - If a bot exceeds the time limit **or** sends a malformed/invalid message, the bot is **auto-folded for the entire current hand**. Specifically:
   - The bot is treated as having folded immediately.
   - The bot receives no further prompts for the remainder of that hand.
@@ -474,4 +474,4 @@ P1 → Engine:      CHECK
 | Swap costs | N/A | Per-card cost, varies by street, multiple of small blind |
 | Blinds | Fixed or timed | Start 1/2, escalate each revolution capped by min stack |
 | Invalid IO | N/A | Auto-fold for the hand |
-| Response time | N/A | 100ms limit, auto-fold on timeout |
+| Response time | N/A | 10ms limit, auto-fold on timeout |

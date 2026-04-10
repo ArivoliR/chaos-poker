@@ -67,4 +67,4 @@ Any official clarifications to the rules will be summarised in this README so yo
 
 ## Clarifications
 
-No official clarifications have been issued yet.
+- Response timeout: the official time limit is now 10 ms per decision, and the provided test harness has been updated accordingly.

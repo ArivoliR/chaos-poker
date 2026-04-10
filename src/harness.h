@@ -9,7 +9,7 @@ class Harness {
 public:
     // Launch bot processes from the given commands.
     // commands[i] is the executable for seat i.
-    explicit Harness(const std::vector<std::string>& commands, int timeout_ms = 100);
+    explicit Harness(const std::vector<std::string>& commands, int timeout_ms = 10);
     ~Harness();
 
     // Get the BotIO callbacks wired to the bot processes.
