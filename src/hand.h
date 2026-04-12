@@ -27,7 +27,7 @@ public:
 
 private:
     void deal_hole_cards();
-    void deal_community(Street street);
+    bool deal_community(Street street);
 
     void swap_phase(Street street);
     void vote_phase(Street street);
