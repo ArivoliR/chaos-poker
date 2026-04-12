@@ -153,6 +153,7 @@ bool Hand::post_blinds() {
     // small blind
     int sb_post = std::min(sb, players[sb_seat].chips);
     players[sb_seat].chips -= sb_post;
+    small_blind_post_ = sb_post;
     round_bets_[sb_seat] = sb_post;
     total_invested_[sb_seat] += sb_post;
     pot_ += sb_post;
@@ -161,6 +162,7 @@ bool Hand::post_blinds() {
     // big blind
     int bb_post = std::min(bb, players[bb_seat].chips);
     players[bb_seat].chips -= bb_post;
+    big_blind_post_ = bb_post;
     round_bets_[bb_seat] = bb_post;
     total_invested_[bb_seat] += bb_post;
     pot_ += bb_post;
@@ -393,12 +395,12 @@ void Hand::betting_round(Street street) {
     last_raise_size_ = state_.big_blind();
 
     if (street == Street::PREFLOP) {
-        // Blinds were already posted in post_blinds(). Reflect them as this round's bets.
+        // Pre-flop round bets should only reflect the blinds, not swap costs.
         int sb_s = state_.small_blind_seat();
         int bb_s = state_.big_blind_seat();
-        round_bets_[sb_s] = total_invested_[sb_s];
-        round_bets_[bb_s] = total_invested_[bb_s];
-        current_bet_ = round_bets_[bb_s];
+        round_bets_[sb_s] = small_blind_post_;
+        round_bets_[bb_s] = big_blind_post_;
+        current_bet_ = big_blind_post_;
         last_raise_size_ = state_.big_blind();
     }
 
